@@ -1,8 +1,10 @@
 from django.db import models
+from authentication.models import User
+from comment.models import Comment
 
 # Create your models here.
 
-class SuperType(models.Model):
-    user = models.ForeignKey(SuperType,on_delete=CASCADE)
-    Comment = models.ForeignKey(SuperType,on_delete=CASCADE)
+class Reply(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    Comment = models.ForeignKey(Comment,user,on_delete=models.CASCADE)
     text = models.CharField(max_length=255)

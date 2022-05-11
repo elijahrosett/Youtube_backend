@@ -36,12 +36,19 @@ def user_comments(request):
         return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'PUT'])
 @permission_classes([AllowAny]) 
-def comments_by_video(request, pk):
+def comments_by_detail(request, pk):
     if request.method == "GET":
         comments = Comment.objects.filter(video_id=pk)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+    elif request.method == 'PUT':
+        comment = Comment.id
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 

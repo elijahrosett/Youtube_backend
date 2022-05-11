@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
     path('api/comment/', include('comment.urls')),
+    path('api/replys/', include('replys.urls'))
 ]

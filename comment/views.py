@@ -21,7 +21,6 @@ def get_all(request):
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def user_comments(request):
-   
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':
@@ -36,12 +35,19 @@ def user_comments(request):
         return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'PUT'])
 @permission_classes([AllowAny]) 
-def comments_by_video(request, pk):
+def comments_by_detail(request, pk):
     if request.method == "GET":
         comments = Comment.objects.filter(video_id=pk)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+    elif request.method == 'PUT':
+        comment = get_object_or_404(Comment, pk=pk)
+        serializer = CommentSerializer(comment, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 

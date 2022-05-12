@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a6ac43fd-484e-4194-9b09-b76d143131bc",
+		"_postman_id": "03525b0a-00e7-4fac-bbe9-f21bc2673796",
 		"name": "Youtube clone",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -328,6 +328,60 @@
 								""
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Replys",
+			"item": [
+				{
+					"name": "Get_All_Replys (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replys/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replys",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Replys_Of_User (protected)",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Replys",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Replys_By_Comment_Id",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}

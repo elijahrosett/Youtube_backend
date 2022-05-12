@@ -13,17 +13,6 @@ def get_all(request):
     serializer = ReplySerializer(reply , many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def comment_replys(request):
-    print(
-        'Comment ', f"{request.comment.id}")
-
-    if request.method == 'GET':
-        reply = Reply.objects.filter(comment_id=request.comment.id)
-        serializer = ReplySerializer(reply, many=True)
-        return Response(serializer.data)
-
 @api_view(['GET','POST'])
 @permission_classes([IsAuthenticated]) 
 def replys_by_comment(request, pk):

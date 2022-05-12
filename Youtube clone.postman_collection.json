@@ -274,7 +274,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/comment/abc123",
+							"raw": "http://127.0.0.1:8000/api/comment/13",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -286,7 +286,7 @@
 							"path": [
 								"api",
 								"comment",
-								"abc123"
+								"13"
 							]
 						}
 					},
@@ -299,13 +299,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMjM0MTM2LCJpYXQiOjE2NTIzNzAxMzYsImp0aSI6IjQxODk3MGM1YzdmNjQzNjM4Yzc5MzEyYmU5NjhhMTE1IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.N3EYvSzBLZZNcp9UlmM-R6aRrZG0jD7otVGPl8ekTUc",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMjM0OTA5LCJpYXQiOjE2NTIzNzA5MDksImp0aSI6IjZhZTc4ZWM4MDI3MzQ5OTNiNDM5NjE3NTYzMjAxMWVlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.hWM25K4HrDttv-j7Ah2-O3bin14Vy8iMerDWdeB8Hvc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"video_id\": \"123\",\r\n    \"text\": \"nice\",\r\n    \"likes\": 250000,\r\n    \"dislikes\": 1\r\n}",
+							"raw": "{\r\n\r\n    \"video_id\": \"10\",\r\n    \"text\": \"nice\",\r\n    \"likes\": 250000,\r\n    \"dislikes\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -342,7 +342,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/replys/all/",
+							"raw": "http://127.0.0.1:8000/api/comment/replies/all",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -353,33 +353,9 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"replys",
-								"all",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get_Replys_Of_User (protected)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/replys/",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"replys",
-								""
+								"comment",
+								"replies",
+								"all"
 							]
 						}
 					},
@@ -389,9 +365,24 @@
 					"name": "Create_Replys",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMjM0OTA5LCJpYXQiOjE2NTIzNzA5MDksImp0aSI6IjZhZTc4ZWM4MDI3MzQ5OTNiNDM5NjE3NTYzMjAxMWVlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.hWM25K4HrDttv-j7Ah2-O3bin14Vy8iMerDWdeB8Hvc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"user\": 2,\r\n    \"comment\": 3,\r\n    \"text\": \"This is a test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/replys/2/",
+							"raw": "http://127.0.0.1:8000/api/comment/replies/5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -402,9 +393,9 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"replys",
-								"2",
-								""
+								"comment",
+								"replies",
+								"5"
 							]
 						}
 					},
@@ -414,9 +405,15 @@
 					"name": "Get_Replys_By_Comment_Id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMjM0OTA5LCJpYXQiOjE2NTIzNzA5MDksImp0aSI6IjZhZTc4ZWM4MDI3MzQ5OTNiNDM5NjE3NTYzMjAxMWVlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.hWM25K4HrDttv-j7Ah2-O3bin14Vy8iMerDWdeB8Hvc",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/replys/2/",
+							"raw": "http://127.0.0.1:8000/api/comment/replies/5",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -427,9 +424,9 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"replys",
-								"2",
-								""
+								"comment",
+								"replies",
+								"5"
 							]
 						}
 					},

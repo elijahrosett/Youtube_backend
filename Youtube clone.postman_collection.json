@@ -230,7 +230,7 @@
 				{
 					"name": "Update_Comment",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
@@ -240,7 +240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"video_id\": \"6s5df1s65df1\",\r\n    \"text\": \"Here is my comment\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 0\r\n}",
+							"raw": "{\r\n\r\n    \"video_id\": \"6s5df1s65df1\",\r\n    \"text\": \"Here is my comment\",\r\n    \"likes\": 7,\r\n    \"dislikes\": 0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,6 +287,45 @@
 								"api",
 								"comment",
 								"abc123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post_Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMjM0MTM2LCJpYXQiOjE2NTIzNzAxMzYsImp0aSI6IjQxODk3MGM1YzdmNjQzNjM4Yzc5MzEyYmU5NjhhMTE1IiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.N3EYvSzBLZZNcp9UlmM-R6aRrZG0jD7otVGPl8ekTUc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"video_id\": \"123\",\r\n    \"text\": \"nice\",\r\n    \"likes\": 250000,\r\n    \"dislikes\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comment/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comment",
+								""
 							]
 						}
 					},

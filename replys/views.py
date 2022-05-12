@@ -1,36 +1,40 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from comment.models import Comment
 from .serializers import ReplySerializer
 from .models import Reply
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def get_all(request):
+    reply = Reply.objects.all()
+    serializer = ReplySerializer(reply , many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 @api_view(['GET', 'POST'])
-def replys_list(request):
+@permission_classes([IsAuthenticated])
+def comment_replys(request):
+    print(
+        'Comment ', f"{request.comment.id}")
 
-    if request.method == 'GET':
-        type_param = request.query_params.get('type')
-        replys = Reply.objects.all()
-        if type_param:
-            replys = replys.filter(comment__type=type_param)
-            serializer = ReplySerializer(replys, many=True)
-            return Response(serializer.data)
-        custom_response_dictionary = {}
-        comments = Comment.objects.all()
-        for comment in comments:
-            replys = Reply.objects.filter(comment_id=comment.id)
-
-            reply_serializer = ReplySerializer(replys, many=True)
-
-            custom_response_dictionary[comment.type] = {
-                "": reply_serializer.data
-            }
-        return Response(custom_response_dictionary)
-
-
-    elif request.method == 'POST':
+    if request.method == 'POST':
         serializer = ReplySerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if serializer.is_valid():
+            serializer.save(comment=request.comment)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    elif request.method == 'GET':
+        reply = Reply.objects.filter(comment_id=request.comment.id)
+        serializer = ReplySerializer(reply, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated]) 
+def replys_by_comment(request, pk):
+    if request.method == "GET":
+        replys = Reply.objects.filter(comment_id=pk)
+        serializer = ReplySerializer(replys, many=True)
+        return Response(serializer.data)

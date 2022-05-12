@@ -44,10 +44,10 @@ def comments_by_detail(request, pk):
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        comment = Comment.id
+        comment = get_object_or_404(Comment, pk=pk)
         serializer = CommentSerializer(comment, data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

@@ -240,7 +240,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n    \"video_id\": \"6s5df1s65df1\",\r\n    \"text\": \"Here is my comment\",\r\n    \"likes\": 7,\r\n    \"dislikes\": 0\r\n}",
+							"raw": "{\r\n\r\n    \"video_id\": \"6s5df1s65df1\",\r\n    \"text\": \"Here is my comment\",\r\n    \"likes\": 255,\r\n    \"dislikes\": 0\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -269,7 +269,7 @@
 					"response": []
 				},
 				{
-					"name": "Get_Video_Comments_By_Video_ID",
+					"name": "Get_Comments_By_Video_ID",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -334,7 +334,7 @@
 			]
 		},
 		{
-			"name": "Get_Video_Comments",
+			"name": "Get_All",
 			"request": {
 				"method": "GET",
 				"header": [

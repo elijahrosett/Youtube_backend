@@ -19,13 +19,6 @@ def comment_replys(request):
     print(
         'Comment ', f"{request.comment.id}")
 
-    # if request.method == 'POST':
-    #     serializer = ReplySerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save(comment=request.comment)
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
     if request.method == 'GET':
         reply = Reply.objects.filter(comment_id=request.comment.id)
         serializer = ReplySerializer(reply, many=True)
@@ -39,7 +32,7 @@ def replys_by_comment(request, pk):
         serializer = ReplySerializer(replys, many=True)
         return Response(serializer.data)
 
-    if request.method == 'POST':
+    elif request.method == 'POST':
             serializer = ReplySerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save(comment_id=pk)

@@ -365,7 +365,23 @@
 					"name": "Get_Replys_Of_User (protected)",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replys/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replys",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -373,7 +389,24 @@
 					"name": "Create_Replys",
 					"request": {
 						"method": "POST",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replys/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replys",
+								"2",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -381,7 +414,24 @@
 					"name": "Get_Replys_By_Comment_Id",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replys/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replys",
+								"2",
+								""
+							]
+						}
 					},
 					"response": []
 				}

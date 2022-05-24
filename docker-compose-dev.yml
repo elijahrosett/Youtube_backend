@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8002:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh ./entrypoint.sh
+
+  db:
+    container_name: db
+    image: mysql
+    environment:
+      MYSQL_DATABASE: 'youtube_database'
+      MYSQL_ROOT_PASSWORD: '123456'
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - production_db_volume:/var/lib/mysql
+
+volumes:
+  production_db_volume:

@@ -1,1 +1,1 @@
-# drf_jwt_backend
+YouTube clone frontend @ https://github.com/deshawnb/youtube-frontend
